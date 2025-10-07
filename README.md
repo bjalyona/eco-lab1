@@ -32,13 +32,17 @@
 
 ```c
 typedef struct IEcoLab1VTbl {
+
     /* IEcoUnknown */
-    int16_t (ECOCALLMETHOD *QueryInterface)(/* in */ struct IEcoLab1* me, /* in */ const UGUID* riid, /* out */ void **ppv);
-    uint32_t (ECOCALLMETHOD *AddRef)(/* in */ struct IEcoLab1* me);
-    uint32_t (ECOCALLMETHOD *Release)(/* in */ struct IEcoLab1* me);
+
+    int16_t (ECOCALLMETHOD *QueryInterface)(/* in */ IEcoLab1Ptr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
+    uint32_t (ECOCALLMETHOD *AddRef)(/* in */ IEcoLab1Ptr_t me);
+    uint32_t (ECOCALLMETHOD *Release)(/* in */ IEcoLab1Ptr_t me);
 
     /* IEcoLab1 */
-    int16_t (ECOCALLMETHOD *MyFunction)(/* in */ struct IEcoLab1* me, /* in */ int32_t* Array, /* in */ uint32_t nSize);
+
+    int16_t (ECOCALLMETHOD *MyFunction)(IEcoLab1Ptr_t me, int32_t* Array, uint32_t nSize);
+
 } IEcoLab1VTbl, *IEcoLab1VTblPtr;
 
 interface IEcoLab1 {
